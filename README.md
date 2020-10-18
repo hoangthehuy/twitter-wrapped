@@ -1,0 +1,10 @@
+# Twitter Wrapped
+Info 253A Fall 2020<br>
+An Bui, Huy Hoang, John Yang, Kelvin Ngo<br>
+Due 10/19/2020
+
+The purpose of our project is to design a front end application that provides a Twitter user with a summary of their activities during the last calendar year. The concept is particularly similar to the “Spotify Wrapped” ([link](https://www.spotify.com/us/wrapped/)) that provides Spotify users with interesting insights into their music listening history during the past calendar year, with information such as how many songs they’ve listened to, their favorite artists and genres, and the amount of time they have listened to different playlists, along with much more.
+
+We plan to do something similar with a Twitter user. A logged in Twitter user will be able to see aggregates and insights based on their Twitter account information. We will be heavily using the Twitter API to retrieve information that we will be processing and displaying on the front end web application. The kind of information we display, which we are still working on, will influence the kinds of functionality we may implement. For instance, simple information such as who a Twitter user followed during the past year, or how many times he/she/they tweeted, should be evident with the correct API endpoint call. More complex information - such as political leanings, favorite topics, or amount of interactions in the forms of tweets, retweets, and likes - may require some processing of the API data. This may present some opportunities for building cool additional features such as text processing or machine learning models.
+
+Our plan is to first, build the front end application. We will likely create a fake Twitter user and populate it with some arbitrary information. We’ll aim to display basic information about this fake user as our minimum proof of concept. Then, with more exploration of the Twitter API, we can display a greater breadth of insights through data processing. With enough time, we may also implement a login system such that a user can login with Twitter and see this information about their own accounts.
