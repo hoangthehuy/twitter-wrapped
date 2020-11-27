@@ -39,7 +39,20 @@ app.get('/twitterData', (req, res) => {
         var created_at = dataMap['created_at'];
         var tweet_count = dataMap['tweet_count'];
         var recent_tweets = dataMap['recent_tweets'];
-        res.render("twitterData", {userName: name, userScreenName: screenName, userLocation: location, userDescription: description, userFollowerCount: followers_count, userFollowingCount: following_count, userTweetCount: tweet_count, userCreatedDate: created_at});
+        res.render("twitterData", 
+                    {
+                    userName: name, 
+                    userScreenName: screenName, 
+                    userLocation: location, 
+                    userDescription: description, 
+                    userFollowerCount: followers_count, 
+                    userFollowingCount: following_count, 
+                    userTweetCount: tweet_count, 
+                    userCreatedDate: created_at,
+                    userRecentTweets1: recent_tweets[0],
+                    userRecentTweets2: recent_tweets[1],
+                    userRecentTweets3: recent_tweets[2]
+                    });
     });
 
     py.stdin.write(JSON.stringify(data));

@@ -1,16 +1,6 @@
 import tweepy
 import sys, json
 import os
-# import flask
-
-# Set up flask
-# app = flask.Flask("__main__")
-
-# @app.route("/")
-# def my_index():
-#     return flask.render_template("index.html", token="Hello Flask+React")
-
-# app.run()
 
 # Kelvin Ngo's credetials
 consumer_key = "X3I0iztfxrJ1zKkyGpde7RvEi"
@@ -51,7 +41,7 @@ def get_user_info(username):
     user_info["recent_tweets"] = []
 
     # Try to get recent tweets, if the account is private, just return the dictionary with everything but recent_tweets
-    recent_tweet_count = 10
+    recent_tweet_count = 3
     try:
         statuses = api.user_timeline(username, count=recent_tweet_count)
         for status in statuses: 
