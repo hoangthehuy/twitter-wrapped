@@ -22,7 +22,7 @@ export const Search = ({onSubmit}) => {
         <br/>
         <Form onSubmit={() => onSubmit(name)}>
         <Form.Field inline>
-            <Input size='large' icon='search' placeholder='Twitter username here' onChange={handleChange}/>
+            <Input size='huge' icon='search' placeholder='Twitter username here' onChange={handleChange}/>
         </Form.Field>
         </Form>
         </center>
