@@ -1,0 +1,14 @@
+center {
+    margin-bottom: 1.5rem;
+}
+
+#wrapped {
+    font-family: HelveticaNeue-CondensedBold;
+    color: #1DA1F2;
+    font-size: 30px;
+}
+
+#twitter-logo {
+    width: 70px;
+    height: auto;
+}

@@ -1,6 +1,10 @@
 import * as React from "react";
+import {Form, Image, Input} from "semantic-ui-react";
+import 'semantic-ui-css/semantic.min.css';
+import Twitter_Logo from "../assets/Twitter_Logo_Blue.svg";
+import "./landing.css";
 
-export const LandingPage = ({onSubmit}) => {
+export const Search = ({onSubmit}) => {
     const [name, setName] = React.useState("");
 
     const handleChange = (event) => {
@@ -9,13 +13,19 @@ export const LandingPage = ({onSubmit}) => {
     };
 
     return (
-    <div id="landingPage">
-      <div id="header">
-          <form onSubmit={() => onSubmit(name)}>
-              <input type="text"  onChange={handleChange} name="twitterUsername" placeholder="Twitter username here" required />
-              <button type="submit">Submit</button>
-          </form>
-      </div>
+    <div>
+        <center>    
+        <Image id="twitter-logo" src={Twitter_Logo} alt="twitter" avatar size="small"/>
+        <div>
+            <span id="wrapped"> Wrapped </span>
+        </div>
+        <br/>
+        <Form onSubmit={() => onSubmit(name)}>
+        <Form.Field inline>
+            <Input size='large' icon='search' placeholder='Twitter username here' onChange={handleChange}/>
+        </Form.Field>
+        </Form>
+        </center>
     </div>
     );
 
