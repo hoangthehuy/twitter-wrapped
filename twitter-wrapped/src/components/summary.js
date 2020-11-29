@@ -10,7 +10,7 @@ export const Summary = ({data}) => {
 
     const formatJoinDate = (dateStr) => {
         const date = new Date(dateStr);
-        return date.toLocaleDateString('en-GB', {
+        return "Since " + date.toLocaleDateString('en-GB', {
             month : 'short',
             year : 'numeric'
         });
@@ -41,25 +41,25 @@ export const Summary = ({data}) => {
         </Card.Content>
         <Card.Meta>
         &nbsp;&nbsp;&nbsp;
-        <a>
+        <span>
             <Icon name='map marker alternate' />
             {data["location"]}
-        </a>
+        </span>
         &nbsp;
-        <a>
+        <span>
             <Icon name='calendar alternate outline' />
             {formatJoinDate(data["created_at"])}
-        </a>
+        </span>
         </Card.Meta>
         <Card.Content extra>
-        <a>
+        <span>
             {formatFollowingCount(data["following_count"])}
-        </a>
+        </span>
         &nbsp;
         &nbsp;
-        <a>
+        <span>
             {formatFollowersCount(data["followers_count"])}
-        </a>
+        </span>
         </Card.Content>
     </Card>
     </div>
