@@ -4,11 +4,11 @@ In the project directory, you can run:
 
 ### `pip install -r python_requirements.txt`
 
-Installs the ncessary python package(s).
+Installs the necessary python package(s).
 
 ### `yarn install`
 
-Installs the ncessary node package(s).
+Installs the necessary node package(s).
 
 ### `yarn dev`
 
