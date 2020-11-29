@@ -1,18 +1,6 @@
 import tweepy
 import sys, json
 import os
-# import flask
-
-# Set up flask
-# app = flask.Flask("__main__")
-
-# @app.route("/")
-# def my_index():
-#     return flask.render_template("index.html", token="Hello Flask+React")
-
-# app.run()
-
-print("hi1")
 
 # Kelvin Ngo's credetials
 consumer_key = "X3I0iztfxrJ1zKkyGpde7RvEi"
@@ -43,6 +31,7 @@ Note: Recent Tweets feature only works on public accounts, private accounts will
 def get_user_info(username):
     # Set up dictionary
     user = api.get_user(username)
+    print(user)
     user_info = {}
     user_info["screen_name"] = user.screen_name
     user_info["name"] = user.name
@@ -71,9 +60,9 @@ def read_in():
     return json.loads(lines[0])
 
 def main():
-    # username = read_in()
-    # info = get_user_info(username)
-    print("hi")
+    username = read_in()
+    info = get_user_info(username)
+    print(info)
 
 if __name__ == '__main__':
     main()
