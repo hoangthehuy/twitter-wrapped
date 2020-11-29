@@ -1,4 +1,3 @@
-const { countReset } = require('console');
 const express = require('express');
           app = express();
    bodyParser = require('body-parser');
@@ -6,7 +5,7 @@ const express = require('express');
 
 
 // Setting default view engine
-app.set('view engine', 'ejs');
+// app.set('view engine', 'ejs');
 // Allows us to get input data from form
 app.use(bodyParser.urlencoded({extended: true}));
 // Serve the public directory (CSS and JS)

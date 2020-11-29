@@ -4,12 +4,12 @@ import './App.css';
 import {LandingPage} from "./components";
 
 function App() {
-  const [userData, setUserData] = React.useState(null);
+  // const [userData, setUserData] = React.useState(null);
 
   const handleSubmit = async (name) => {
     const data = {twitterUsername: name};
-    axios.post("/twitterData", data).then(resp => {
-      setUserData(resp.data);
+    axios.post("http://localhost:8080/twitterData", data).then(resp => {
+      // setUserData(resp.data);
       console.log(resp.data);
     });
   }
