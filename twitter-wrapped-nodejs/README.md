@@ -2,9 +2,13 @@
 
 In the project directory, you can run:
 
-### `pip install -r python_requirements.txr`
+### `pip install -r python_requirements.txt`
 
 Installs the ncessary python package(s).
+
+### `yarn install`
+
+Installs the ncessary node package(s).
 
 ### `yarn dev`
 
