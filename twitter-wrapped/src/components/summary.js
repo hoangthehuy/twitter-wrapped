@@ -29,7 +29,7 @@ export const Summary = ({data}) => {
     return (
     <div>
     <Card>
-        <Image src={Default_Pic} wrapped ui={false} />
+        <Image src={data["photo_url"] ? data["photo_url"]: Default_Pic} wrapped ui={false} />
         <Card.Content>
         <Card.Header>{data["name"]} </Card.Header>
         <Card.Meta>
