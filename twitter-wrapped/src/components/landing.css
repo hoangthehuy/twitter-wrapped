@@ -2,6 +2,12 @@ center {
     margin-bottom: 1.5rem;
 }
 
+#main {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
 #wrapped {
     font-family: HelveticaNeue-CondensedBold;
     color: #1DA1F2;

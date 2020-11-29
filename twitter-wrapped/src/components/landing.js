@@ -13,7 +13,7 @@ export const Search = ({onSubmit}) => {
     };
 
     return (
-    <div>
+    <div id="main">
         <center>    
         <Image id="twitter-logo" src={Twitter_Logo} alt="twitter" avatar size="small"/>
         <div>
