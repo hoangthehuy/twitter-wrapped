@@ -62,7 +62,14 @@ export const Summary = ({data}) => {
         </span>
         </Card.Content>
     </Card>
+    <h3>Recent Tweets</h3>
+    {data["recent_tweets"].map(tweet => (
+      <Card>
+        <Card.Content>
+          {tweet}
+        </Card.Content>
+      </Card>
+    ))}
     </div>
     );
-
 };
