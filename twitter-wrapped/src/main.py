@@ -1,6 +1,18 @@
 import tweepy
 import sys, json
 import os
+# import flask
+
+# Set up flask
+# app = flask.Flask("__main__")
+
+# @app.route("/")
+# def my_index():
+#     return flask.render_template("index.html", token="Hello Flask+React")
+
+# app.run()
+
+print("hi1")
 
 # Kelvin Ngo's credetials
 consumer_key = "X3I0iztfxrJ1zKkyGpde7RvEi"
@@ -20,6 +32,8 @@ auth.set_access_token(access_token, access_token_secret)
 
 api = tweepy.API(auth)
 
+
+
 """
 {Input} username (str); string of the user's profile you want to look at.
 {Output} user_info (dict); dictionary containing screen_name, name, location, description, followers_count,
@@ -36,13 +50,13 @@ def get_user_info(username):
     user_info["description"] = user.description
     user_info["followers_count"] = user.followers_count
     user_info["following_count"] = user.friends_count
-    user_info["created_at"] = user.created_at.strftime("%d-%b-%Y (%H:%M:%S.%f)")
+    user_info["created_at"] = user.created_at
     user_info["tweet_count"] = user.statuses_count
     user_info["photo_url"] = user.profile_image_url
     user_info["recent_tweets"] = []
 
     # Try to get recent tweets, if the account is private, just return the dictionary with everything but recent_tweets
-    recent_tweet_count = 3
+    recent_tweet_count = 10
     try:
         statuses = api.user_timeline(username, count=recent_tweet_count)
         for status in statuses: 
@@ -57,10 +71,9 @@ def read_in():
     return json.loads(lines[0])
 
 def main():
-    username = read_in()
-    info = get_user_info(username)
-    info = json.dumps(info)
-    print(info)
+    # username = read_in()
+    # info = get_user_info(username)
+    print("hi")
 
 if __name__ == '__main__':
     main()
