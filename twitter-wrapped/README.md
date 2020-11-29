@@ -7,4 +7,4 @@ Install necessary packages.
 
 ### `yarn start`
 
-Start the app.
+Start the app in `http://localhost:3000`.
