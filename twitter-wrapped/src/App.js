@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import * as React from "react";
+import axios from "axios";
 import './App.css';
+import {LandingPage} from "./components";
 
 function App() {
+  const [userData, setUserData] = React.useState(null);
+
+  const handleSubmit = async (name) => {
+    const data = {twitterUsername: name};
+    axios.post("/twitterData", data).then(resp => {
+      setUserData(resp.data);
+      console.log(resp.data);
+    });
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <LandingPage onSubmit={handleSubmit}/>
     </div>
   );
 }
