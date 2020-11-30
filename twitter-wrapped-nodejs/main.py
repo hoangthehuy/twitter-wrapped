@@ -1,6 +1,7 @@
 import tweepy
 import sys, json
 import os
+from collections import defaultdict
 
 # Kelvin Ngo's credetials
 consumer_key = "X3I0iztfxrJ1zKkyGpde7RvEi"
@@ -39,16 +40,16 @@ def get_user_info(username):
     user_info["created_at"] = user.created_at.strftime("%d-%b-%Y (%H:%M:%S.%f)")
     user_info["tweet_count"] = user.statuses_count
     user_info["photo_url"] = user.profile_image_url
-    user_info["recent_tweets"] = []
+    user_info["recent_tweets"] = defaultdict(list)
 
     # Try to get recent tweets, if the account is private, just return the dictionary with everything but recent_tweets
     recent_tweet_count = 3
     try:
         statuses = api.user_timeline(username, count=recent_tweet_count)
         for status in statuses: 
-            user_info["recent_tweets"].append(status.text)
+            user_info["recent_tweets"]['id_str'].append(status.id_str)
     except tweepy.error.TweepError:
-        pass
+        raise Exception("Fail to get recent tweets")
 
     return user_info
 

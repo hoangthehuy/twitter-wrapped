@@ -1,6 +1,7 @@
 import * as React from "react";
-import { Card, Feed, Icon, Image, Statistic } from "semantic-ui-react";
+import { Card, Icon, Image, Statistic } from "semantic-ui-react";
 import 'semantic-ui-css/semantic.min.css';
+import {Tweet} from "react-twitter-widgets";
 import Default_Pic from "../assets/default_profile_pic.png";
 
 export const Summary = ({data}) => {
@@ -15,7 +16,7 @@ export const Summary = ({data}) => {
             year : 'numeric'
         });
     };
-
+    
     return (
     <div>
     <h2>Profile</h2>
@@ -67,26 +68,9 @@ export const Summary = ({data}) => {
         </Statistic>
     </Statistic.Group>
     <h3> Recent Tweets </h3>
-    <Card>
-        <Card.Content>
-            <Feed>
-            {data["recent_tweets"].map(tweet => (
-                <Feed.Event>
-                    <Feed.Label image={data["photo_url"] ? data["photo_url"]: Default_Pic}/>
-                    <Feed.Content>
-                        <Feed.Summary>
-                            {data["name"]}
-                            <Feed.Date>{formatScreenName(data["screen_name"])}</Feed.Date>
-                        </Feed.Summary>
-                        <Feed.Extra text>
-                            {tweet}
-                        </Feed.Extra>
-                    </Feed.Content>
-                </Feed.Event>
-                ))}
-            </Feed>
-        </Card.Content>
-    </Card>
+    {data["recent_tweets"]["id_str"].map(id => (
+            <Tweet tweetId={id}/>
+    ))}
     <Statistic.Group widths='three' size='small'>
         <Statistic color='purple'>
             <Statistic.Value>43</Statistic.Value>
