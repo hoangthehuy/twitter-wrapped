@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Button, Icon, Image, Item, Label, Grid, Progress } from "semantic-ui-react";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Radar,
+         RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis } from 'recharts';
 import 'semantic-ui-css/semantic.min.css';
 
 export const Analytics = ({data}) => {
@@ -58,13 +59,22 @@ export const Analytics = ({data}) => {
   ]
 
   const lineChart = [
-      {name: 'June', viewed: 423, views: 240},
-      {name: 'July', viewed: 313, views: 139},
-      {name: 'August', viewed: 292, views: 680},
-      {name: 'September', viewed: 278, views: 394},
-      {name: 'October', viewed: 189, views: 489},
-      {name: 'November', viewed: 239, views: 381},
-      {name: 'December', viewed: 349, views: 430},
+    {name: 'June', viewed: 423, views: 240},
+    {name: 'July', viewed: 313, views: 139},
+    {name: 'August', viewed: 292, views: 680},
+    {name: 'September', viewed: 278, views: 394},
+    {name: 'October', viewed: 189, views: 489},
+    {name: 'November', viewed: 239, views: 381},
+    {name: 'December', viewed: 349, views: 430},
+  ];
+
+  const radialData = [
+    { subject: 'Length', A: 91, fullMark: 100 },
+    { subject: 'Emojis', A: 73, fullMark: 100 },
+    { subject: 'Mentions', A: 61, fullMark: 100 },
+    { subject: 'Pictures', A: 56, fullMark: 100 },
+    { subject: 'Videos', A: 49, fullMark: 100 },
+    { subject: 'Frequency', A: 82, fullMark: 100 },
   ];
 
   return (
@@ -91,7 +101,7 @@ export const Analytics = ({data}) => {
       </Progress>
     ))}
   </div>
-  &nbsp;
+  <br />
   <div>
     <b>Favorite Accounts</b> by Most Liked Tweets
     <Grid columns={2} celled>
@@ -144,22 +154,32 @@ export const Analytics = ({data}) => {
       ))}
     </Grid>
   </div>
-  <div>
+  <br />
+  <center>
     <b>Monthly Tweet Views + Monthly Tweets Viewed</b>
     <br /><br />
-    <center>
-      <LineChart width={800} height={300} data={lineChart}
-              margin={{top: 5, right: 30, left: 20, bottom: 5}}>
-          <XAxis dataKey="name"/>
-          <YAxis/>
-          <CartesianGrid strokeDasharray="3 3"/>
-          <Tooltip/>
-          <Legend />
-          <Line type="monotone" dataKey="views" stroke="red" activeDot={{r: 8}}/>
-          <Line type="monotone" dataKey="viewed" stroke="blue" />
-      </LineChart>
-    </center>
-  </div>
+    <LineChart width={800} height={300} data={lineChart}
+            margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+        <XAxis dataKey="name"/>
+        <YAxis/>
+        <CartesianGrid strokeDasharray="3 3"/>
+        <Tooltip/>
+        <Legend />
+        <Line type="monotone" dataKey="views" stroke="red" activeDot={{r: 8}}/>
+        <Line type="monotone" dataKey="viewed" stroke="blue" />
+    </LineChart>
+  </center>
+  <center>
+    <b>Tweet Percentiles</b>
+    <br /><br />
+    Each metric is taken as an average across all tweets, then compared to the general population of Twitter users
+    <RadarChart outerRadius={150} width={600} height={400} data={radialData}>
+      <PolarGrid />
+      <PolarAngleAxis dataKey="subject" />
+      <PolarRadiusAxis/>
+      <Radar name="Mike" dataKey="A" stroke="green" fill="green" fillOpacity={0.6}/>
+    </RadarChart>
+  </center>
   <h2>Recommendations</h2>
   <p>Based on your favorite subjects and accounts you've interacted with the most, we think you might be interested in...</p>
   <hr />
