@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Label, Progress } from "semantic-ui-react";
+import { Image, Label, Grid, Progress } from "semantic-ui-react";
 import 'semantic-ui-css/semantic.min.css';
 
 export const Analytics = ({data}) => {
@@ -15,7 +15,12 @@ export const Analytics = ({data}) => {
   const words = [['game', 73, 'red'], ['student', 56, 'orange'], ['work', 41, 'yellow'],
     ['best', 37, 'olive'], ['king', 25, 'green'], ['ball', 23, 'teal'], ['gym', 14, 'blue']]
 
-  const frequencies = []
+  const favAccounts = [
+    {'name': 'National Geographic', 'acct': '@NatGeo', 'likes': 10, 'image': 'https://pbs.twimg.com/profile_images/1305841513050583045/GMz3LpM1_400x400.png'},
+    {'name': 'Reuters', 'acct': '@Reuters', 'likes': 15, 'image': 'https://pbs.twimg.com/profile_images/1194751949821939712/3VBu4_Sa_400x400.jpg'},
+    {'name': 'NBA', 'acct': '@NBA', 'likes': 13, 'image': 'https://pbs.twimg.com/profile_images/1329296372986753026/AXwqAk9-_400x400.jpg'},
+    {'name': 'Disney', 'acct': '@Disney', 'likes': 23, 'image': 'https://pbs.twimg.com/profile_images/1289584734494892032/Z1TjPU-z_400x400.jpg'}
+  ]
 
   return (
   <div>
@@ -37,6 +42,20 @@ export const Analytics = ({data}) => {
         '{word[0]}' - {word[1]}% of all tweets
       </Progress>
     ))}
+  </div>
+  &nbsp;
+  <div>
+    <b>Most Liked Accounts</b>
+    <Grid columns={2} celled>
+      {favAccounts.map((account, index) => (
+          <Grid.Column>
+            <Image src={account['image']} size='tiny' floated='left' />
+            <b>{account['name']}</b> <br />
+            {account['acct']} <br />
+            <b>{account['likes']}</b> Tweets ❤️
+          </Grid.Column>
+      ))}
+    </Grid>
   </div>
   </div>
   )

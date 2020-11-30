@@ -16,16 +16,6 @@ export const Summary = ({data}) => {
         });
     };
 
-    const formatFollowingCount = (value) => {
-        return <span> <b>{value} </b> Following</span>
-
-    };
-
-    const formatFollowersCount = (value) => {
-        return <span> <b>{value} </b> Followers</span>
-
-    };
-
     return (
     <div>
     <h3>Profile</h3>
@@ -52,6 +42,7 @@ export const Summary = ({data}) => {
             {formatJoinDate(data["created_at"])}
         </span>
         </Card.Meta>
+        &nbsp;
     </Card>
     <Statistic.Group widths='two' size='mini'>
         <Statistic color='teal'>
@@ -93,8 +84,8 @@ export const Summary = ({data}) => {
                         </Feed.Summary>
                         <Feed.Extra text>
                             {tweet}
-                        </Feed.Extra>       
-                    </Feed.Content>   
+                        </Feed.Extra>
+                    </Feed.Content>
                 </Feed.Event>
                 ))}
             </Feed>
