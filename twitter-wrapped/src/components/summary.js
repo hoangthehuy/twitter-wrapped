@@ -101,10 +101,8 @@ export const Summary = ({data}) => {
             </Statistic.Label>
         </Statistic>
     </Statistic.Group>
+    <h3> Recent Tweets </h3>
     <Card>
-        <Card.Content>
-            <Card.Header>Recent Tweets</Card.Header>
-        </Card.Content>
         <Card.Content>
             <Feed>
             {data["recent_tweets"].map(tweet => (
@@ -135,6 +133,7 @@ export const Summary = ({data}) => {
             </Feed>
         </Card.Content>
     </Card>
+    &nbsp;&nbsp;
     </div>
     );
 };
