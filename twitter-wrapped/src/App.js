@@ -1,7 +1,7 @@
 import * as React from "react";
 import axios from "axios";
 import './App.css';
-import {Search, Summary} from "./components";
+import {Search, Summary, Analytics} from "./components";
 
 function App() {
   const [userData, setUserData] = React.useState(null);
@@ -22,6 +22,10 @@ function App() {
       <div>
       {userData && <Summary data={userData}/>}
       </div>
+      <div>
+      {userData && <Analytics data={userData}/>}
+      </div>
+      <br />
     </div>
   );
 }
