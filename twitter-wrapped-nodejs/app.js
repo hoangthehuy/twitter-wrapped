@@ -37,17 +37,6 @@ app.post('/twitterData', (req, res) => {
     });
 });
 
-app.post('/twitterOEmbed', (req, res) => {
-    link = req.body.link
-    axios.get(`https://publish.twitter.com/oembed?url=${link}`).then(resp => {
-            console.log(resp.data);
-            res.json(resp.data);
-
-    }).catch(error => {
-        console.log(error);
-    });
-});
-
 const PORT = 8080;
 app.listen(PORT, (err) => {
     if(err) {
