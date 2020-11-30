@@ -36,6 +36,13 @@ export const Analytics = ({data}) => {
     {'name': 'Steve Carell', 'acct': '@SteveCarell', 'mentions': 3, 'image': 'https://pbs.twimg.com/profile_images/771722848704475136/4doM7H7R_400x400.jpg'},
   ]
 
+  const mentionedAccounts = [
+    {'name': 'UC Berkeley', 'acct': '@UCBerkeley', 'mentions': 2, 'image': 'https://pbs.twimg.com/profile_images/1115397640357728256/J34RZtya_400x400.png'},
+    {'name': 'NCAA', 'acct': '@NCAA', 'mentions': 2, 'image': 'https://pbs.twimg.com/profile_images/875707949217308673/KoeOIQIV_400x400.jpg'},
+    {'name': 'Tom Anderson', 'acct': '@myspacetom', 'mentions': 1, 'image': 'https://pbs.twimg.com/profile_images/1237550450/mstom_400x400.jpg'},
+    {'name': 'Mark Zuckerberg', 'acct': '@finkd', 'mentions': 1, 'image': 'https://pbs.twimg.com/profile_images/77846223/profile_400x400.jpg'},
+  ]
+
   const recommendations = [
     {'name': 'Conan O Brien', 'handle': '@ConanOBrien', 'desc': 'Late night talk show host on TBS', 'sources': 'Steve Carell, SNL, NBC', 'image': 'https://pbs.twimg.com/profile_images/730612231021322240/Rl0_QYhL_400x400.jpg'},
     {'name': 'Robert Downey Jr.', 'handle': '@robertdowneyjr', 'desc': 'American actor and producer. Known for Iron Man, Sherlock Holmes.', 'sources': 'Disney, Marvel, Dwayne Johnson', 'image': 'https://pbs.twimg.com/profile_images/712016346775564289/ajnm_P3F_400x400.jpg'},
@@ -109,6 +116,19 @@ export const Analytics = ({data}) => {
             <b>{account['name']}</b> <br />
             {account['acct']} <br />
             <b>{account['mentions']}</b> Tweets @'ed
+          </Grid.Column>
+      ))}
+    </Grid>
+  </div>
+  <div>
+    <b>Most Accounts Mentioning You</b>
+    <Grid columns={2} celled>
+      {mentionedAccounts.map((account, index) => (
+          <Grid.Column>
+            <Image src={account['image']} size='tiny' floated='left' circular />
+            <b>{account['name']}</b> <br />
+            {account['acct']} <br />
+            <b>{account['mentions']}</b> Tweets @ You
           </Grid.Column>
       ))}
     </Grid>
