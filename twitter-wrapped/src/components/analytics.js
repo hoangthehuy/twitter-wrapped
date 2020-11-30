@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Image, Item, Label, Grid, Progress } from "semantic-ui-react";
+import { Button, Icon, Image, Item, Label, Grid, Progress } from "semantic-ui-react";
 import 'semantic-ui-css/semantic.min.css';
 
 export const Analytics = ({data}) => {
@@ -40,6 +40,13 @@ export const Analytics = ({data}) => {
     {'name': 'Conan O Brien', 'handle': '@ConanOBrien', 'desc': 'Late night talk show host on TBS', 'sources': 'Steve Carell, SNL, NBC', 'image': 'https://pbs.twimg.com/profile_images/730612231021322240/Rl0_QYhL_400x400.jpg'},
     {'name': 'Robert Downey Jr.', 'handle': '@robertdowneyjr', 'desc': 'American actor and producer. Known for Iron Man, Sherlock Holmes.', 'sources': 'Disney, Marvel, Dwayne Johnson', 'image': 'https://pbs.twimg.com/profile_images/712016346775564289/ajnm_P3F_400x400.jpg'},
     {'name': 'Microsoft', 'handle': '@Microsoft', 'desc': 'Multinational technology company headquartered in Redmond, Washington', 'sources': 'Bill Gates, Google', 'image': 'https://pbs.twimg.com/profile_images/1323136652504526850/QMvdTdGk_400x400.png'},
+  ]
+
+  const socialMedia = [
+    {'company': 'Facebook', 'logo': 'facebook', 'color': 'blue', 'count': 34},
+    {'company': 'Twitter', 'logo': 'twitter', 'color': 'teal', 'count': 21},
+    {'company': 'Slack', 'logo': 'slack', 'color': 'red', 'count': 7},
+    {'company': 'Google Plus', 'logo': 'google plus', 'color': 'yellow', 'count': 0},
   ]
 
   return (
@@ -122,6 +129,24 @@ export const Analytics = ({data}) => {
       </Item>
     ))}
   </Item.Group>
+  <hr />
+  <br />
+  <center>
+    <h3>Share your results!</h3>
+    <div>
+    {socialMedia.map(media => (
+      <Button as='div' labelPosition='right'>
+        <Button color={media['color']}>
+          <Icon name={media['logo']} />
+          {media['company']}
+        </Button>
+        <Label as='a' basic color={media['color']} pointing='left'>
+          {media['count']}
+        </Label>
+      </Button>
+    ))}
+  </div>
+  </center>
   </div>
   )
 }
