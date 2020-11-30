@@ -38,8 +38,9 @@ export const Analytics = ({data}) => {
 
   return (
   <div>
-  <h3>Analytics</h3>
+  <h2>Analytics</h2>
   <p>All measurements and surveys accounts for account activity from the past calendar year since today.</p>
+  <hr />
   <div>
     <b>Favorite Topics</b>: &nbsp;
     {topics.map(topic => (
@@ -48,13 +49,14 @@ export const Analytics = ({data}) => {
         {topic['topic']}
       </Label>
     ))}
+    <p>Based on your favorite topics, we estimate <b>4.3</b>% of Twitter users have the same tastes as you. Unique palette 🎨!</p>
   </div>
   &nbsp;
   <div>
     <b>Most Frequent Words</b>
     {words.map(word => (
       <Progress percent={word[1]} color={word[2]} size='tiny'>
-        '{word[0]}' - {word[1]}% of all tweets
+        '{word[0]}' - {word[1]}% of tweets
       </Progress>
     ))}
   </div>
@@ -64,7 +66,7 @@ export const Analytics = ({data}) => {
     <Grid columns={2} celled>
       {favAccounts.map((account, index) => (
           <Grid.Column>
-            <Image src={account['image']} size='tiny' floated='left' />
+            <Image src={account['image']} size='tiny' floated='left' circular />
             <b>{account['name']}</b> <br />
             {account['acct']} <br />
             <b>{account['likes']}</b> Tweets ❤️
@@ -77,7 +79,7 @@ export const Analytics = ({data}) => {
     <Grid columns={2} celled>
       {retweetAccounts.map((account, index) => (
           <Grid.Column>
-            <Image src={account['image']} size='tiny' floated='left' />
+            <Image src={account['image']} size='tiny' floated='left' circular />
             <b>{account['name']}</b> <br />
             {account['acct']} <br />
             <b>{account['retweets']}</b> Tweets 📣
@@ -90,7 +92,7 @@ export const Analytics = ({data}) => {
     <Grid columns={2} celled>
       {mentionAccounts.map((account, index) => (
           <Grid.Column>
-            <Image src={account['image']} size='tiny' floated='left' />
+            <Image src={account['image']} size='tiny' floated='left' circular />
             <b>{account['name']}</b> <br />
             {account['acct']} <br />
             <b>{account['mentions']}</b> Tweets @'ed
@@ -98,6 +100,9 @@ export const Analytics = ({data}) => {
       ))}
     </Grid>
   </div>
+  <h2>Recommendations</h2>
+  <hr />
+
   </div>
   )
 }
