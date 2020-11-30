@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Label } from "semantic-ui-react";
+import { Label, Progress } from "semantic-ui-react";
 import 'semantic-ui-css/semantic.min.css';
 
 export const Analytics = ({data}) => {
@@ -12,13 +12,16 @@ export const Analytics = ({data}) => {
     {'topic': 'Business', 'color': 'white', 'image': 'https://media.istockphoto.com/vectors/tie-icon-vector-vector-id867883650?k=6&m=867883650&s=612x612&w=0&h=hl30NvFL4wTm3aNXf_cYNxBkUWV_NrO1huVaRCcdDio='}
   ];
 
-  const words = ['work', 'student', 'game', 'best', 'king', 'ball', 'gym']
+  const words = [['game', 73, 'red'], ['student', 56, 'orange'], ['work', 41, 'yellow'],
+    ['best', 37, 'olive'], ['king', 25, 'green'], ['ball', 23, 'teal'], ['gym', 14, 'blue']]
+
+  const frequencies = []
 
   return (
   <div>
   <h3>Analytics</h3>
   <div>
-    Favorite Topics: &nbsp;
+    <b>Favorite Topics</b>: &nbsp;
     {topics.map(topic => (
       <Label as='a' color={topic['color']} image>
         <img src={topic['image']} alt={topic['topic']} />
@@ -26,10 +29,14 @@ export const Analytics = ({data}) => {
       </Label>
     ))}
   </div>
-
+  &nbsp;
   <div>
-    Most Frequent Words: &nbsp;
-    {words.map(word => (<Label as='a' tag> {word} </Label>))}
+    <b>Most Frequent Words</b>
+    {words.map(word => (
+      <Progress percent={word[1]} color={word[2]} size='tiny'>
+        '{word[0]}' - {word[1]}% of all tweets
+      </Progress>
+    ))}
   </div>
   </div>
   )
