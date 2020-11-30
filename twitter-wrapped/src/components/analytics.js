@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Button, Icon, Image, Item, Label, Grid, Progress } from "semantic-ui-react";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import 'semantic-ui-css/semantic.min.css';
 
 export const Analytics = ({data}) => {
@@ -55,6 +56,16 @@ export const Analytics = ({data}) => {
     {'company': 'Slack', 'logo': 'slack', 'color': 'red', 'count': 7},
     {'company': 'Google Plus', 'logo': 'google plus', 'color': 'yellow', 'count': 0},
   ]
+
+  const lineChart = [
+      {name: 'June', viewed: 423, views: 240},
+      {name: 'July', viewed: 313, views: 139},
+      {name: 'August', viewed: 292, views: 680},
+      {name: 'September', viewed: 278, views: 394},
+      {name: 'October', viewed: 189, views: 489},
+      {name: 'November', viewed: 239, views: 381},
+      {name: 'December', viewed: 349, views: 430},
+  ];
 
   return (
   <div>
@@ -132,6 +143,22 @@ export const Analytics = ({data}) => {
           </Grid.Column>
       ))}
     </Grid>
+  </div>
+  <div>
+    <b>Monthly Tweet Views + Monthly Tweets Viewed</b>
+    <br /><br />
+    <center>
+      <LineChart width={800} height={300} data={lineChart}
+              margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+          <XAxis dataKey="name"/>
+          <YAxis/>
+          <CartesianGrid strokeDasharray="3 3"/>
+          <Tooltip/>
+          <Legend />
+          <Line type="monotone" dataKey="views" stroke="red" activeDot={{r: 8}}/>
+          <Line type="monotone" dataKey="viewed" stroke="blue" />
+      </LineChart>
+    </center>
   </div>
   <h2>Recommendations</h2>
   <p>Based on your favorite subjects and accounts you've interacted with the most, we think you might be interested in...</p>
