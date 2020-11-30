@@ -1,6 +1,4 @@
 import * as React from "react";
-import ReactPlayer from "react-player";
-import axios from "axios";
 import { Card, Feed, Icon, Image, Statistic } from "semantic-ui-react";
 import 'semantic-ui-css/semantic.min.css';
 import Default_Pic from "../assets/default_profile_pic.png";
@@ -26,26 +24,6 @@ export const Summary = ({data}) => {
     const formatFollowersCount = (value) => {
         return <span> <b>{value} </b> Followers</span>
 
-    };
-
-    const isValidURL = (tweet) => {
-        try {
-            new URL(tweet);
-          } catch (_) {
-            return false;  
-          }
-          return true;
-    };
-
-    const formatVideoPlayer = () => {
-        // const videoURL = URL.createObjectURL(tweet)
-        const data = {link: encodeURIComponent("https://twitter.com/TeamTrump/status/1333075330584743936")};
-        let html;
-        axios.post(`http://localhost:8080/twitterOEmbed`, data).then(resp => {
-            console.log(resp);
-            html = resp.html;
-        })
-        return html;
     };
 
     return (
@@ -113,20 +91,9 @@ export const Summary = ({data}) => {
                             {data["name"]}
                             <Feed.Date>{formatScreenName(data["screen_name"])}</Feed.Date>
                         </Feed.Summary>
-                        {
-                        !isValidURL(tweet) 
-                        && 
                         <Feed.Extra text>
                             {tweet}
-                        </Feed.Extra>
-                        }  
-                        {
-                        isValidURL(tweet) 
-                        && 
-                        <Feed.Extra>
-                            {formatVideoPlayer}
-                        </Feed.Extra>
-                        }       
+                        </Feed.Extra>       
                     </Feed.Content>   
                 </Feed.Event>
                 ))}
