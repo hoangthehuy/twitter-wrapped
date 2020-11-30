@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Image, Label, Grid, Progress } from "semantic-ui-react";
+import { Image, Item, Label, Grid, Progress } from "semantic-ui-react";
 import 'semantic-ui-css/semantic.min.css';
 
 export const Analytics = ({data}) => {
@@ -34,6 +34,12 @@ export const Analytics = ({data}) => {
     {'name': 'Dwayne Johnson', 'acct': '@TheRock', 'mentions': 4, 'image': 'https://pbs.twimg.com/profile_images/3478244961/01ebfc40ecc194a2abc81e82ab877af4_400x400.jpeg'},
     {'name': 'Michelle Obama', 'acct': '@MichelleObama', 'mentions': 3, 'image': 'https://pbs.twimg.com/profile_images/1192811236242722816/-r8d4_d3_400x400.jpg'},
     {'name': 'Steve Carell', 'acct': '@SteveCarell', 'mentions': 3, 'image': 'https://pbs.twimg.com/profile_images/771722848704475136/4doM7H7R_400x400.jpg'},
+  ]
+
+  const recommendations = [
+    {'name': 'Conan O Brien', 'handle': '@ConanOBrien', 'desc': 'Late night talk show host on TBS', 'sources': 'Steve Carell, SNL, NBC', 'image': 'https://pbs.twimg.com/profile_images/730612231021322240/Rl0_QYhL_400x400.jpg'},
+    {'name': 'Robert Downey Jr.', 'handle': '@robertdowneyjr', 'desc': 'American actor and producer. Known for Iron Man, Sherlock Holmes.', 'sources': 'Disney, Marvel, Dwayne Johnson', 'image': 'https://pbs.twimg.com/profile_images/712016346775564289/ajnm_P3F_400x400.jpg'},
+    {'name': 'Microsoft', 'handle': '@Microsoft', 'desc': 'Multinational technology company headquartered in Redmond, Washington', 'sources': 'Bill Gates, Google', 'image': 'https://pbs.twimg.com/profile_images/1323136652504526850/QMvdTdGk_400x400.png'},
   ]
 
   return (
@@ -101,8 +107,21 @@ export const Analytics = ({data}) => {
     </Grid>
   </div>
   <h2>Recommendations</h2>
+  <p>Based on your favorite subjects and accounts you've interacted with the most, we think you might be interested in...</p>
   <hr />
-
+  <Item.Group divided>
+    {recommendations.map(rec => (
+      <Item>
+        <Item.Image size='tiny' src={rec['image']} rounded />
+        <Item.Content>
+          <Item.Header as='a'>{rec['name']}</Item.Header>
+          <Item.Meta>{rec['handle']}</Item.Meta>
+          <Item.Description>{rec['desc']}</Item.Description>
+          <Item.Extra>Based on your interests in <b>{rec['sources']}</b></Item.Extra>
+        </Item.Content>
+      </Item>
+    ))}
+  </Item.Group>
   </div>
   )
 }
