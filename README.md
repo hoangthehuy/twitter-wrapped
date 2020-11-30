@@ -13,3 +13,6 @@ Our plan is to first, build the front end application. We will likely create a f
 - Feasibility: Twitter's API is well tested and heavily used in Apps, projects, and academic researches. It's powerful and well-rounded. Exploring new features provided for its sake can be really fun. 
 - Scope: I am not sure how you will "wrap" the returned data and translate it into "insights", but we don't expect you build a fancy NLP or machine learning model. You may or may not want to process the data, depending on how confident in the other technical skills or ambitious you are. Need not over do it.
 - Requirements: Satisfied. 
+
+## Presentation Slides (Nov. 30, 2020)
+[Link](https://docs.google.com/presentation/d/1_WQgtGyNIwS9-88Q_raFB3irkPXZMkijgdfGiErIvAg/edit?usp=sharing) to Slides
