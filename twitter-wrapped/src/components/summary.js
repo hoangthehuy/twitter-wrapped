@@ -1,5 +1,7 @@
 import * as React from "react";
-import { Card, Icon, Image, Statistic } from "semantic-ui-react";
+import ReactPlayer from "react-player";
+import axios from "axios";
+import { Card, Feed, Icon, Image, Statistic } from "semantic-ui-react";
 import 'semantic-ui-css/semantic.min.css';
 import Default_Pic from "../assets/default_profile_pic.png";
 
@@ -14,6 +16,36 @@ export const Summary = ({data}) => {
             month : 'short',
             year : 'numeric'
         });
+    };
+
+    const formatFollowingCount = (value) => {
+        return <span> <b>{value} </b> Following</span>
+
+    };
+
+    const formatFollowersCount = (value) => {
+        return <span> <b>{value} </b> Followers</span>
+
+    };
+
+    const isValidURL = (tweet) => {
+        try {
+            new URL(tweet);
+          } catch (_) {
+            return false;  
+          }
+          return true;
+    };
+
+    const formatVideoPlayer = () => {
+        // const videoURL = URL.createObjectURL(tweet)
+        const data = {link: encodeURIComponent("https://twitter.com/TeamTrump/status/1333075330584743936")};
+        let html;
+        axios.post(`http://localhost:8080/twitterOEmbed`, data).then(resp => {
+            console.log(resp);
+            html = resp.html;
+        })
+        return html;
     };
 
     return (
@@ -42,20 +74,6 @@ export const Summary = ({data}) => {
             {formatJoinDate(data["created_at"])}
         </span>
         </Card.Meta>
-{/* <<<<<<< HEAD
-        <Card.Content extra>
-        <span>
-            {formatFollowingCount(data["following_count"])}
-        </span>
-        &nbsp;
-        &nbsp;
-        <span>
-            {formatFollowersCount(data["followers_count"])}
-        </span>
-        </Card.Content>
-=======
-        &nbsp;
->>>>>>> 528aec85ec18abb743e40efabdbe4a242d6d32e2 */}
     </Card>
     <Statistic.Group widths='two' size='mini'>
         <Statistic color='teal'>
@@ -83,15 +101,40 @@ export const Summary = ({data}) => {
             </Statistic.Label>
         </Statistic>
     </Statistic.Group>
-    <h3>Recent Tweets</h3>
-    {data["recent_tweets"].map(tweet => (
-      <Card>
+    <Card>
         <Card.Content>
-          {tweet}
+            <Card.Header>Recent Tweets</Card.Header>
         </Card.Content>
-      </Card>
-    ))}
-    <br />
-  </div>
-  );
+        <Card.Content>
+            <Feed>
+            {data["recent_tweets"].map(tweet => (
+                <Feed.Event>
+                    <Feed.Label image={data["photo_url"] ? data["photo_url"]: Default_Pic}/>
+                    <Feed.Content>
+                        <Feed.Summary>
+                            {data["name"]}
+                            <Feed.Date>{formatScreenName(data["screen_name"])}</Feed.Date>
+                        </Feed.Summary>
+                        {
+                        !isValidURL(tweet) 
+                        && 
+                        <Feed.Extra text>
+                            {tweet}
+                        </Feed.Extra>
+                        }  
+                        {
+                        isValidURL(tweet) 
+                        && 
+                        <Feed.Extra>
+                            {formatVideoPlayer}
+                        </Feed.Extra>
+                        }       
+                    </Feed.Content>   
+                </Feed.Event>
+                ))}
+            </Feed>
+        </Card.Content>
+    </Card>
+    </div>
+    );
 };

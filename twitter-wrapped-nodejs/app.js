@@ -2,7 +2,7 @@ const express = require('express');
           app = express();
    bodyParser = require('body-parser');
          cors = require('cors');
-
+        axios = require('axios');
 
 // Setting default view engine
 // app.set('view engine', 'ejs');
@@ -34,6 +34,17 @@ app.post('/twitterData', (req, res) => {
         dataMap = JSON.parse(data);
         console.log(dataMap);
         res.json(dataMap);  
+    });
+});
+
+app.post('/twitterOEmbed', (req, res) => {
+    link = req.body.link
+    axios.get(`https://publish.twitter.com/oembed?url=${link}`).then(resp => {
+            console.log(resp.data);
+            res.json(resp.data);
+
+    }).catch(error => {
+        console.log(error);
     });
 });
 
