@@ -51,7 +51,7 @@ export const Summary = ({data}) => {
             <Statistic.Value>{data["following_count"]}</Statistic.Value>
             <Statistic.Label>Following</Statistic.Label>
             <Statistic.Label>
-              {data["following_count"] < 200 ? (data["following_count"]/200 * 100).toFixed(1) : 99.9} Percentile
+              {data["following_count"] < 300 ? (data["following_count"]/300 * 100).toFixed(1) : 99.9} Percentile
             </Statistic.Label>
         </Statistic>
         <Statistic color='orange'>
@@ -62,8 +62,8 @@ export const Summary = ({data}) => {
             </Statistic.Value>
             <Statistic.Label>Followers</Statistic.Label>
             <Statistic.Label>
-              {data["followers_count"] < 1000 ?
-                (data["followers_count"]/1000 * 100).toFixed(1) : 99.9} Percentile
+              {data["followers_count"] < 927 ?
+                (data["followers_count"]/900 * 100).toFixed(1) : 99.9} Percentile
             </Statistic.Label>
         </Statistic>
     </Statistic.Group>

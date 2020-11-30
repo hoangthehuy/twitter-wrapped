@@ -1,5 +1,7 @@
 import * as React from "react";
-import { Image, Label, Grid, Progress } from "semantic-ui-react";
+import { Button, Icon, Image, Item, Label, Grid, Progress } from "semantic-ui-react";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Radar,
+         RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis } from 'recharts';
 import 'semantic-ui-css/semantic.min.css';
 
 export const Analytics = ({data}) => {
@@ -36,6 +38,45 @@ export const Analytics = ({data}) => {
     {'name': 'Steve Carell', 'acct': '@SteveCarell', 'mentions': 3, 'image': 'https://pbs.twimg.com/profile_images/771722848704475136/4doM7H7R_400x400.jpg'},
   ]
 
+  const mentionedAccounts = [
+    {'name': 'UC Berkeley', 'acct': '@UCBerkeley', 'mentions': 2, 'image': 'https://pbs.twimg.com/profile_images/1115397640357728256/J34RZtya_400x400.png'},
+    {'name': 'NCAA', 'acct': '@NCAA', 'mentions': 2, 'image': 'https://pbs.twimg.com/profile_images/875707949217308673/KoeOIQIV_400x400.jpg'},
+    {'name': 'Tom Anderson', 'acct': '@myspacetom', 'mentions': 1, 'image': 'https://pbs.twimg.com/profile_images/1237550450/mstom_400x400.jpg'},
+    {'name': 'Mark Zuckerberg', 'acct': '@finkd', 'mentions': 1, 'image': 'https://pbs.twimg.com/profile_images/77846223/profile_400x400.jpg'},
+  ]
+
+  const recommendations = [
+    {'name': 'Conan O Brien', 'handle': '@ConanOBrien', 'desc': 'Late night talk show host on TBS', 'sources': 'Steve Carell, SNL, NBC', 'image': 'https://pbs.twimg.com/profile_images/730612231021322240/Rl0_QYhL_400x400.jpg'},
+    {'name': 'Robert Downey Jr.', 'handle': '@robertdowneyjr', 'desc': 'American actor and producer. Known for Iron Man, Sherlock Holmes.', 'sources': 'Disney, Marvel, Dwayne Johnson', 'image': 'https://pbs.twimg.com/profile_images/712016346775564289/ajnm_P3F_400x400.jpg'},
+    {'name': 'Microsoft', 'handle': '@Microsoft', 'desc': 'Multinational technology company headquartered in Redmond, Washington', 'sources': 'Bill Gates, Google', 'image': 'https://pbs.twimg.com/profile_images/1323136652504526850/QMvdTdGk_400x400.png'},
+  ]
+
+  const socialMedia = [
+    {'company': 'Facebook', 'logo': 'facebook', 'color': 'blue', 'count': 34},
+    {'company': 'Twitter', 'logo': 'twitter', 'color': 'teal', 'count': 21},
+    {'company': 'Slack', 'logo': 'slack', 'color': 'red', 'count': 7},
+    {'company': 'Google Plus', 'logo': 'google plus', 'color': 'yellow', 'count': 0},
+  ]
+
+  const lineChart = [
+    {name: 'June', viewed: 423, views: 240},
+    {name: 'July', viewed: 313, views: 139},
+    {name: 'August', viewed: 292, views: 680},
+    {name: 'September', viewed: 278, views: 394},
+    {name: 'October', viewed: 189, views: 489},
+    {name: 'November', viewed: 239, views: 381},
+    {name: 'December', viewed: 349, views: 430},
+  ];
+
+  const radialData = [
+    { subject: 'Length', A: 91, fullMark: 100 },
+    { subject: 'Emojis', A: 73, fullMark: 100 },
+    { subject: 'Mentions', A: 61, fullMark: 100 },
+    { subject: 'Pictures', A: 56, fullMark: 100 },
+    { subject: 'Videos', A: 49, fullMark: 100 },
+    { subject: 'Frequency', A: 82, fullMark: 100 },
+  ];
+
   return (
   <div>
   <h2>Analytics</h2>
@@ -60,7 +101,7 @@ export const Analytics = ({data}) => {
       </Progress>
     ))}
   </div>
-  &nbsp;
+  <br />
   <div>
     <b>Favorite Accounts</b> by Most Liked Tweets
     <Grid columns={2} celled>
@@ -100,9 +141,79 @@ export const Analytics = ({data}) => {
       ))}
     </Grid>
   </div>
+  <div>
+    <b>Most Accounts Mentioning You</b>
+    <Grid columns={2} celled>
+      {mentionedAccounts.map((account, index) => (
+          <Grid.Column>
+            <Image src={account['image']} size='tiny' floated='left' circular />
+            <b>{account['name']}</b> <br />
+            {account['acct']} <br />
+            <b>{account['mentions']}</b> Tweets @ You
+          </Grid.Column>
+      ))}
+    </Grid>
+  </div>
+  <br />
+  <center>
+    <b>Monthly Tweet Views + Monthly Tweets Viewed</b>
+    <br /><br />
+    <LineChart width={800} height={300} data={lineChart}
+            margin={{top: 5, right: 30, left: 20, bottom: 5}}>
+        <XAxis dataKey="name"/>
+        <YAxis/>
+        <CartesianGrid strokeDasharray="3 3"/>
+        <Tooltip/>
+        <Legend />
+        <Line type="monotone" dataKey="views" stroke="red" activeDot={{r: 8}}/>
+        <Line type="monotone" dataKey="viewed" stroke="blue" />
+    </LineChart>
+  </center>
+  <center>
+    <b>Tweet Percentiles</b>
+    <br /><br />
+    Each metric is taken as an average across all tweets, then compared to the general population of Twitter users
+    <RadarChart outerRadius={150} width={600} height={400} data={radialData}>
+      <PolarGrid />
+      <PolarAngleAxis dataKey="subject" />
+      <PolarRadiusAxis/>
+      <Radar name="Mike" dataKey="A" stroke="green" fill="green" fillOpacity={0.6}/>
+    </RadarChart>
+  </center>
   <h2>Recommendations</h2>
+  <p>Based on your favorite subjects and accounts you've interacted with the most, we think you might be interested in...</p>
   <hr />
-
+  <Item.Group divided>
+    {recommendations.map(rec => (
+      <Item>
+        <Item.Image size='tiny' src={rec['image']} rounded />
+        <Item.Content>
+          <Item.Header as='a'>{rec['name']}</Item.Header>
+          <Item.Meta>{rec['handle']}</Item.Meta>
+          <Item.Description>{rec['desc']}</Item.Description>
+          <Item.Extra>Based on your interests in <b>{rec['sources']}</b></Item.Extra>
+        </Item.Content>
+      </Item>
+    ))}
+  </Item.Group>
+  <hr />
+  <br />
+  <center>
+    <h3>Share your results!</h3>
+    <div>
+    {socialMedia.map(media => (
+      <Button as='div' labelPosition='right'>
+        <Button color={media['color']}>
+          <Icon name={media['logo']} />
+          {media['company']}
+        </Button>
+        <Label as='a' basic color={media['color']} pointing='left'>
+          {media['count']}
+        </Label>
+      </Button>
+    ))}
+  </div>
+  </center>
   </div>
   )
 }
