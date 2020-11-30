@@ -22,9 +22,24 @@ export const Analytics = ({data}) => {
     {'name': 'Disney', 'acct': '@Disney', 'likes': 23, 'image': 'https://pbs.twimg.com/profile_images/1289584734494892032/Z1TjPU-z_400x400.jpg'}
   ]
 
+  const retweetAccounts = [
+    {'name': 'NBC Bay Area', 'acct': '@nbcbayarea', 'retweets': 8, 'image': 'https://pbs.twimg.com/profile_images/1242907435582382081/1AscQT32_400x400.png'},
+    {'name': 'Saturday Night Live - SNL', 'acct': 'nbcsnl', 'retweets': 8, 'image': 'https://pbs.twimg.com/profile_images/1159903342182699009/VOkYedxH_400x400.jpg'},
+    {'name': 'Marvel Entertainment', 'acct': '@Marvel', 'retweets': 3, 'image': 'https://pbs.twimg.com/profile_images/573984336271122432/k8vEBoCW_400x400.jpeg'},
+    {'name': 'Google', 'acct': '@Google', 'retweets': 2, 'image': 'https://pbs.twimg.com/profile_images/1329829922081271815/P_WGsgxW_400x400.jpg'}
+  ]
+
+  const mentionAccounts = [
+    {'name': 'Bill Gates', 'acct': '@BillGates', 'mentions': 6, 'image': 'https://pbs.twimg.com/profile_images/988775660163252226/XpgonN0X_400x400.jpg'},
+    {'name': 'Dwayne Johnson', 'acct': '@TheRock', 'mentions': 4, 'image': 'https://pbs.twimg.com/profile_images/3478244961/01ebfc40ecc194a2abc81e82ab877af4_400x400.jpeg'},
+    {'name': 'Michelle Obama', 'acct': '@MichelleObama', 'mentions': 3, 'image': 'https://pbs.twimg.com/profile_images/1192811236242722816/-r8d4_d3_400x400.jpg'},
+    {'name': 'Steve Carell', 'acct': '@SteveCarell', 'mentions': 3, 'image': 'https://pbs.twimg.com/profile_images/771722848704475136/4doM7H7R_400x400.jpg'},
+  ]
+
   return (
   <div>
   <h3>Analytics</h3>
+  <p>All measurements and surveys accounts for account activity from the past calendar year since today.</p>
   <div>
     <b>Favorite Topics</b>: &nbsp;
     {topics.map(topic => (
@@ -45,7 +60,7 @@ export const Analytics = ({data}) => {
   </div>
   &nbsp;
   <div>
-    <b>Most Liked Accounts</b>
+    <b>Favorite Accounts</b> by Most Liked Tweets
     <Grid columns={2} celled>
       {favAccounts.map((account, index) => (
           <Grid.Column>
@@ -53,6 +68,32 @@ export const Analytics = ({data}) => {
             <b>{account['name']}</b> <br />
             {account['acct']} <br />
             <b>{account['likes']}</b> Tweets ❤️
+          </Grid.Column>
+      ))}
+    </Grid>
+  </div>
+  <div>
+    <b>Favorite Accounts</b> by Most Retweets
+    <Grid columns={2} celled>
+      {retweetAccounts.map((account, index) => (
+          <Grid.Column>
+            <Image src={account['image']} size='tiny' floated='left' />
+            <b>{account['name']}</b> <br />
+            {account['acct']} <br />
+            <b>{account['retweets']}</b> Tweets 📣
+          </Grid.Column>
+      ))}
+    </Grid>
+  </div>
+  <div>
+    <b>Most Mentioned Accounts</b>
+    <Grid columns={2} celled>
+      {mentionAccounts.map((account, index) => (
+          <Grid.Column>
+            <Image src={account['image']} size='tiny' floated='left' />
+            <b>{account['name']}</b> <br />
+            {account['acct']} <br />
+            <b>{account['mentions']}</b> Tweets @'ed
           </Grid.Column>
       ))}
     </Grid>
