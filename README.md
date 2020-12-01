@@ -1,4 +1,5 @@
 # Twitter Wrapped
+
 Info 253A Fall 2020<br>
 An Bui, Huy Hoang, John Yang, Kelvin Ngo<br>
 Due 10/19/2020
@@ -10,9 +11,25 @@ We plan to do something similar with a Twitter user. A logged in Twitter user wi
 Our plan is to first, build the front end application. We will likely create a fake Twitter user and populate it with some arbitrary information. We’ll aim to display basic information about this fake user as our minimum proof of concept. Then, with more exploration of the Twitter API, we can display a greater breadth of insights through data processing. With enough time, we may also implement a login system such that a user can login with Twitter and see this information about their own accounts.
 
 ## TA Comments (Nov. 1st, 2020)
-- Feasibility: Twitter's API is well tested and heavily used in Apps, projects, and academic researches. It's powerful and well-rounded. Exploring new features provided for its sake can be really fun. 
+
+- Feasibility: Twitter's API is well tested and heavily used in Apps, projects, and academic researches. It's powerful and well-rounded. Exploring new features provided for its sake can be really fun.
 - Scope: I am not sure how you will "wrap" the returned data and translate it into "insights", but we don't expect you build a fancy NLP or machine learning model. You may or may not want to process the data, depending on how confident in the other technical skills or ambitious you are. Need not over do it.
-- Requirements: Satisfied. 
+- Requirements: Satisfied.
 
 ## Presentation Slides (Nov. 30, 2020)
+
 [Link](https://docs.google.com/presentation/d/1_WQgtGyNIwS9-88Q_raFB3irkPXZMkijgdfGiErIvAg/edit?usp=sharing) to Slides
+
+
+## Setup Instructions
+
+To run this project locally, follow the steps below:
+
+1. Clone the repository
+2. In the `twitter-wrapped-nodejs` folder, do the following:
+   * Run `pip install -r python_requirements.txt` to install necessary python packges.
+   * Run `yarn install` to install necessary node packages.
+   * Run `yarn dev` to start the backend server.
+3. In the `twitter-wrapped` folder, do the following:
+   * Run `yarn install` to install necessary node packages.
+   * Run `yarn start` to start the app in `http://localhost:3000`
