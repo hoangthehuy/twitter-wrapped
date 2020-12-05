@@ -1,8 +1,8 @@
 # Twitter Wrapped
-Info 253A Fall 2020 Final Project Report
-Phuc Bui, Huy Hoang, Kelvin Ngo, John Yang
-[Link](https://docs.google.com/presentation/d/1_WQgtGyNIwS9-88Q_raFB3irkPXZMkijgdfGiErIvAg/edit?usp=sharing) to Presentation
-[Link](https://sites.ischool.berkeley.edu/i253af20/project-build-something-awesome/) to Project Specification
+Info 253A Fall 2020 Final Project Report<br>
+Phuc Bui, Huy Hoang, Kelvin Ngo, John Yang<br>
+[Link](https://docs.google.com/presentation/d/1_WQgtGyNIwS9-88Q_raFB3irkPXZMkijgdfGiErIvAg/edit?usp=sharing) to Presentation<br>
+[Link](https://sites.ischool.berkeley.edu/i253af20/project-build-something-awesome/) to Project Specification<br>
 
 ## Project Description
 The purpose of our project is to design a front end application that provides a Twitter user with a summary of their activities during the last calendar year. The concept is particularly similar to the “Spotify Wrapped” ([link](https://2020.byspotify.com/us?locale=en)) that provides Spotify users with interesting insights into their music listening history during the past calendar year, with information such as how many songs they’ve listened to, their favorite artists and genres, and the amount of time they have listened to different playlists, along with much more.
